@@ -1,0 +1,4 @@
+10e lr 0.005 milestones 5, 8
+10e lr 0.005 milestones 4, 6, 9
+10e lr 0.004 milestones 5, 8
+10e lr 0.004 milestones 4, 6 9

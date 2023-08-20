@@ -128,14 +128,14 @@ param_scheduler = [
         begin=0,
         end=12,
         by_epoch=True,
-        milestones=[8, 11],
+        milestones=[5, 8],
         gamma=0.1)
 ]
 
 # optimizer
 optim_wrapper = dict(
     type='OptimWrapper',
-    optimizer=dict(type='SGD', lr=0.005, momentum=0.9, weight_decay=0.0001))
+    optimizer=dict(type='SGD', lr=0.004, momentum=0.9, weight_decay=0.0001))
 
 # Default setting for scaling LR automatically
 #   - `enable` means enable scaling LR automatically
@@ -172,7 +172,7 @@ visualizer = dict(
 
 
 log_processor = dict(type='LogProcessor', window_size=50, by_epoch=True)
-work_dir = 'work_dirs/tooth_detection_20e'
+work_dir = 'work_dirs/lr005_58'
 log_level = 'INFO'
 load_from = None
 resume = False
