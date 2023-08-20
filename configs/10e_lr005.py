@@ -1,4 +1,4 @@
-_base_ = 'models/cascade-rcnn_r50_fpn_tooth_only.py'
+_base_ = 'configs/models/cascade-rcnn_r50_fpn_tooth_only.py'
 
 # dataset settings
 dataset_type = 'CocoDataset'
@@ -107,7 +107,7 @@ test_evaluator = dict(
     # format_only=True,
     format_only=False,
     ann_file=data_root + 'annotations/test2_tooth_only.json',
-    #outfile_prefix='work_dirs/test_results/10e_lr005',
+    outfile_prefix='work_dirs/test_results/10e_lr005',
     backend_args=backend_args,
     classwise=True,
     )
