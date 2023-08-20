@@ -1,4 +1,4 @@
-_base_ = '/home/summer23_intern1/workspace/p1/mmdetection/configs/_base_/models/cascade-rcnn_r50_fpn_tooth_only.py'
+_base_ = 'models/cascade-rcnn_r50_fpn_tooth_only.py'
 
 # dataset settings
 dataset_type = 'CocoDataset'
