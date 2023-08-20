@@ -80,7 +80,7 @@ val_evaluator = dict(
     type='CocoMetric',
     ann_file=data_root + 'annotations/valid_tooth_only.json',
     metric='bbox',
-    format_only=True,
+    format_only=False,
     backend_args=backend_args)
 # test_evaluator = val_evaluator
 
