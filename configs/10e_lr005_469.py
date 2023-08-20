@@ -164,8 +164,8 @@ env_cfg = dict(
 )
 
 vis_backends = [dict(type='LocalVisBackend'), 
-                #dict(type='WandbVisBackend',
-                #     init_kwargs=dict(project='tooth-detection-20e'))
+                dict(type='WandbVisBackend',
+                    init_kwargs=dict(project='tooth-detection-20e'))
                 ]
 visualizer = dict(
     type='DetLocalVisualizer', vis_backends=vis_backends, name='visualizer')
