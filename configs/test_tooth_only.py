@@ -97,7 +97,7 @@ test_dataloader = dict(
         data_root=data_root,
         metainfo=metainfo,
         ann_file='annotations/tooth_only_v1/test.json',
-        data_prefix=dict(img='test_sample/'),
+        data_prefix=dict(img='sample/'),
         test_mode=True,
         pipeline=test_pipeline))
 test_evaluator = dict(
@@ -164,8 +164,8 @@ env_cfg = dict(
 )
 
 vis_backends = [dict(type='LocalVisBackend'), 
-                dict(type='WandbVisBackend',
-                     init_kwargs=dict(project='tooth-detection-20e'))
+             #   dict(type='WandbVisBackend',
+              #       init_kwargs=dict(project='tooth-detection-20e'))
                 ]
 visualizer = dict(
     type='DetLocalVisualizer', vis_backends=vis_backends, name='visualizer')
