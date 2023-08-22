@@ -54,7 +54,7 @@ train_dataloader = dict(
         type=dataset_type,
         data_root=data_root,
         metainfo=metainfo,
-        ann_file='annotations/train_tooth_only.json',
+        ann_file='annotations/tooth_only_v1/train.json',
         data_prefix=dict(img='sample/'),
         filter_cfg=dict(filter_empty_gt=True, min_size=32),
         pipeline=train_pipeline,
@@ -69,7 +69,7 @@ val_dataloader = dict(
         type=dataset_type,
         data_root=data_root,
         metainfo=metainfo,
-        ann_file='annotations/valid_tooth_only.json',
+        ann_file='annotations/tooth_only_v1/val.json',
         data_prefix=dict(img='sample/'),
         test_mode=True,
         pipeline=test_pipeline,
@@ -78,7 +78,7 @@ val_dataloader = dict(
 
 val_evaluator = dict(
     type='CocoMetric',
-    ann_file=data_root + 'annotations/valid_tooth_only.json',
+    ann_file=data_root + 'annotations/tooth_only_v1/val.json',
     metric='bbox',
     format_only=False,
     backend_args=backend_args)
@@ -96,7 +96,7 @@ test_dataloader = dict(
         type=dataset_type,
         data_root=data_root,
         metainfo=metainfo,
-        ann_file='annotations/test2_tooth_only.json',
+        ann_file='annotations/tooth_only_v1/test.json',
         data_prefix=dict(img='sample/'),
         test_mode=True,
         pipeline=test_pipeline))
@@ -106,7 +106,7 @@ test_evaluator = dict(
     #metric='bbox',
     # format_only=True,
     format_only=False,
-    ann_file=data_root + 'annotations/test2_tooth_only.json',
+    ann_file=data_root + 'annotations/tooth_only_v1/test.json',
     outfile_prefix='work_dirs/test_results/10e_lr005',
     backend_args=backend_args,
     classwise=True,

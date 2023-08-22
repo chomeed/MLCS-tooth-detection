@@ -1,5 +1,6 @@
 데이터셋 분석
-python analyze_data.py --filename sample_coco.json
+python utils/analyze_data.py --filename sample_coco.json
+python utils/analyze_data.py --filename mmdetection/data/tooth_detection/annotations/tooth_only_v1/val.json
 
 카테고리 제거
 python utils/coco_remove_cat.py --file mmdetection/data/tooth_detection/annotations/sample.json --newfile mmdetection/data/tooth_detection/annotations/tooth_only.json --classes 1 34 35 36 37 38 39 40 41 42 43
