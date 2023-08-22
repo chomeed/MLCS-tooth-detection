@@ -1,2 +1,3 @@
 mmdetection/
-work_dirs/ 
+work_dirs/
+slurm* 
