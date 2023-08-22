@@ -1,0 +1,42 @@
+Total number of images: 24578
+Total number of annotations: 402037
+Total number of categories: 32
+
+
+Class name -- ID -- Annotations
+Tooth num 21 : 10 : 18866
+Tooth num 22 : 11 : 16167
+Tooth num 23 : 12 : 15175
+Tooth num 24 : 13 : 14447
+Tooth num 25 : 14 : 12864
+Tooth num 26 : 15 : 13230
+Tooth num 27 : 16 : 7594
+Tooth num 28 : 17 : 224
+Tooth num 31 : 18 : 18161
+Tooth num 32 : 19 : 17162
+Tooth num 11 : 2 : 18830
+Tooth num 33 : 20 : 15584
+Tooth num 34 : 21 : 14213
+Tooth num 35 : 22 : 12866
+Tooth num 36 : 23 : 13825
+Tooth num 37 : 24 : 9426
+Tooth num 38 : 25 : 269
+Tooth num 41 : 26 : 18163
+Tooth num 42 : 27 : 17024
+Tooth num 43 : 28 : 15377
+Tooth num 44 : 29 : 14248
+Tooth num 12 : 3 : 15867
+Tooth num 45 : 30 : 13009
+Tooth num 46 : 31 : 13978
+Tooth num 47 : 32 : 10308
+Tooth num 48 : 33 : 343
+Tooth num 13 : 4 : 15145
+Tooth num 14 : 5 : 14494
+Tooth num 15 : 6 : 13011
+Tooth num 16 : 7 : 13498
+Tooth num 17 : 8 : 8344
+Tooth num 18 : 9 : 240
+
+
+
+{2: 18830, 3: 15867, 4: 15145, 7: 13498, 10: 18866, 11: 16167, 12: 15175, 13: 14447, 16: 7594, 18: 18161, 19: 17162, 20: 15584, 21: 14213, 22: 12866, 26: 18163, 27: 17024, 28: 15377, 29: 14248, 30: 13009, 31: 13978, 23: 13825, 5: 14494, 6: 13011, 8: 8344, 14: 12864, 15: 13230, 24: 9426, 32: 10308, 33: 343, 25: 269, 9: 240, 17: 224, 972: 24, 992: 5, 993: 15, 991: 14, 994: 7, 971: 20}

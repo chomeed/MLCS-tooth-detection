@@ -1,0 +1,9 @@
+데이터셋 분석
+python analyze_data.py --filename sample_coco.json
+
+카테고리 제거
+python utils/coco_remove_cat.py --file mmdetection/data/tooth_detection/annotations/sample.json --newfile mmdetection/data/tooth_detection/annotations/tooth_only.json --classes 1 34 35 36 37 38 39 40 41 42 43
+
+데이터셋 분리
+python utils/cocosplit.py -s 0.8 mmdetection/data/tooth_detection/annotations/tooth_only.json mmdetection/data/tooth_detection/annotations/tooth_only_v1/train.json mmdetection/data/tooth_detection/annotations/tooth_only_v1/temp.json
+python utils/cocosplit.py -s 0.5 mmdetection/data/tooth_detection/annotations/tooth_only_v1/temp.json mmdetection/data/tooth_detection/annotations/tooth_only_v1/val.json mmdetection/data/tooth_detection/annotations/tooth_only_v1/test.json
