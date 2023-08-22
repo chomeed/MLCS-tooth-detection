@@ -1,0 +1,65 @@
+{
+    "info": {
+        "description": "Sample COCO Dataset",
+        "url": "http://sample-dataset.com",
+        "version": "1.0",
+        "year": 2023,
+        "contributor": "John Doe",
+        "date_created": "2023-08-22"
+    },
+    "licenses": [
+        {
+            "id": 1,
+            "name": "Attribution-NonCommercial License",
+            "url": "https://creativecommons.org/licenses/by-nc/2.0/"
+        }
+    ],
+    "images": [
+        {
+            "id": 1,
+            "width": 800,
+            "height": 600,
+            "file_name": "image1.jpg",
+            "license": 1
+        },
+        {
+            "id": 2,
+            "width": 1024,
+            "height": 768,
+            "file_name": "image2.jpg",
+            "license": 1
+        }
+    ],
+    "annotations": [
+        {
+            "id": 1,
+            "image_id": 1,
+            "category_id": 1,
+            "bbox": [100, 200, 150, 100],
+            "segmentation": [],
+            "area": 15000,
+            "iscrowd": 0
+        },
+        {
+            "id": 2,
+            "image_id": 2,
+            "category_id": 2,
+            "bbox": [200, 300, 120, 80],
+            "segmentation": [],
+            "area": 9600,
+            "iscrowd": 0
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "cat",
+            "supercategory": "animal"
+        },
+        {
+            "id": 2,
+            "name": "dog",
+            "supercategory": "animal"
+        }
+    ]
+}
