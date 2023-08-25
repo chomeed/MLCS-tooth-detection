@@ -1,6 +1,6 @@
 # post_process1.p y 
 from mmdet.datasets.api_wrappers import COCO
-from tqdm import tdqm 
+from tdqm import tdqm 
 from remove_duplicates import remove_duplicates_and_keep_highest 
 import json 
 
