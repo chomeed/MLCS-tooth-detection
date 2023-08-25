@@ -23,11 +23,25 @@ model = init_detector(config_file, checkpoint_file, device='cuda:0')  # or 'cpu'
 # Accumulate all post processed inferences
 post_processed = []
 
+def preprocess_image(image_path):
+    # Load and preprocess the image
+    image = mmcv.imread(image_path)
+    scale_width = 1333
+    scale_height = 800
+
+    # Resize the image with different scaling factors for width and height
+    image = mmcv.imresize(image, scale_factor=(scale_width, scale_height))
+    # Apply any necessary normalization
+    return image
+
+
 # Iterate over COCO dataset
 for (img_id, img) in pbar: 
     # Inference 
     img_filename = data_root + img['file_name']
-    result = inference_detector(model, img_filename)
+    preprocess_image = preprocess_image(img_filename)
+
+    result = inference_detector(model, preprocess_image)
     
     # Tensor to List conversion
     labels = result.pred_instances.labels.tolist()
