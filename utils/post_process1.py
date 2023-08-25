@@ -11,13 +11,9 @@ from mmdet.apis import init_detector, inference_detector
 data_root = 'mmdetection/data/tooth_detection/test_sample/'
 gt_filename = 'mmdetection/data/tooth_detection/annotations/tooth_only_v1/test.json'
 coco_api = COCO(gt_filename)
-<<<<<<< HEAD
-pbar = tqdm(coco_api.imgs)
-=======
 pbar = tqdm(coco_api.imgs.items())
 # 예시. [..., 12345: {'file_name': 'oooo.jpg', 'height': 683, 'id': 12345, 'width': 1024}, ...]
 
->>>>>>> 9d8a7b017b3cbf64df94df3992e45eeb130da28a
 
 # Load the initialized detection model
 config_file = 'configs/test_tooth_only.py'
@@ -27,19 +23,11 @@ model = init_detector(config_file, checkpoint_file, device='cuda:0')  # or 'cpu'
 # Accumulate all post processed inferences
 post_processed = []
 
-
 # Iterate over COCO dataset
-<<<<<<< HEAD
-for img in pbar:
-    print(img)
-    # Inference 
-    result = inference_detector(model, data_root+img)
-=======
 for (img_id, img) in pbar: 
     # Inference 
     img_filename = data_root + img['file_name']
     result = inference_detector(model, img_filename)
->>>>>>> 9d8a7b017b3cbf64df94df3992e45eeb130da28a
     
     # Tensor to List conversion
     labels = result.pred_instances.labels.tolist()
