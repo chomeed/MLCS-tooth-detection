@@ -1,13 +1,16 @@
 # post_process1.p y 
 from mmdet.datasets.api_wrappers import COCO
-from tqdm import tdqm 
+from tqdm import tqdm 
 from remove_duplicates import remove_duplicates_and_keep_highest 
+from mmdet.apis import init_detector, inference_detector
 import json 
 
 # Prepare COCO dataset
 gt_filename = 'mmdetection/data/tooth_detection/annotations/tooth_only_v1/test.json'
 coco_api = COCO(gt_filename)
-pbar = tdqm(coco_api.imgs)
+pbar = tqdm(coco_api.imgs.items())
+# 예시. [..., 12345: {'file_name': 'oooo.jpg', 'height': 683, 'id': 12345, 'width': 1024}, ...]
+
 
 # Load the initialized detection model
 config_file = 'configs/test_tooth_only.py'
@@ -19,9 +22,10 @@ post_processed = []
 
 
 # Iterate over COCO dataset
-for img in pbar: 
+for (img_id, img) in pbar: 
     # Inference 
-    result = inference_detector(model, image)
+    img_filename = data_root + img['file_name']
+    result = inference_detector(model, img_filename)
     
     # Tensor to List conversion
     labels = result.pred_instances.labels.tolist()
