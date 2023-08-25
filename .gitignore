@@ -1,3 +1,5 @@
 mmdetection/
 work_dirs/
-slurm* 
+slurm*
+*.json
+utils/__pycache__/*.pyc 
