@@ -23,9 +23,9 @@ for bbox, score, label in zip(labels, scores, bboxes):
 
 inferences = list(zip(scores, labels, bboxes))
 
-from remove_duplicates import remove_duplicates_highest_score 
+from remove_duplicates import remove_duplicates_and_keep_highest 
 
-filtered_inferences = remove_duplicates_highest_score(inferences) 
+filtered_inferences = remove_duplicates_and_keep_highest(inferences) 
 for _ in filtered_inferences:
     print(_)
 
