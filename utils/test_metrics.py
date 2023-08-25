@@ -2,6 +2,7 @@ from mmdet.datasets.api_wrappers import COCO, COCOeval
 import numpy as np 
 from collections import OrderedDict
 import itertools
+from terminaltables import AsciiTable
 
 metainfo = {
     'classes': ('Tooth num 21', 'Tooth num 22', 'Tooth num 23', 
@@ -102,16 +103,3 @@ table_data += [result for result in results_2d]
 table = AsciiTable(table_data)
 print('\n' + table.table)
 
-metric_items = [
-    'mAP', 'mAP_50', 'mAP_75', 'mAP_s', 'mAP_m', 'mAP_l'
-]
-
-for metric_item in metric_items:
-	key = f'{metric}_{metric_item}'
-	val = coco_eval.stats[coco_metric_names[metric_item]]
-	eval_results[key] = float(f'{round(val, 3)}')
-
-ap = coco_eval.stats[:6]
-print(f'{metric}_mAP_copypaste: {ap[0]:.3f} '
-        f'{ap[1]:.3f} {ap[2]:.3f} {ap[3]:.3f} '
-        f'{ap[4]:.3f} {ap[5]:.3f}')
