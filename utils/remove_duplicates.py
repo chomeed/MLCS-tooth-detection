@@ -11,7 +11,7 @@ def remove_duplicates_and_keep_highest(predictions, image_id=None):
         else:
             unique_predictions[category_id] = (score, bbox)
     
-    filtered_predictions = [{"score": score, "category_id": category_id, "bbox": bbox} for category_id, (score, bbox) in unique_predictions.items()]
+    filtered_predictions = [{"image_id": image_id, "score": score, "category_id": category_id, "bbox": bbox} for category_id, (score, bbox) in unique_predictions.items()]
     
     # Sort the filtered predictions in descending order by score
     #filtered_predictions.sort(reverse=True)

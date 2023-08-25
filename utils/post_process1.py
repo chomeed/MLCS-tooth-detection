@@ -8,7 +8,7 @@ from mmdet.apis import init_detector, inference_detector
 
 
 # Prepare COCO dataset
-data_root = 'mmdetection/data/tooth_detection/test_sample/'
+data_root = 'mmdetection/data/tooth_detection/sample/'
 gt_filename = 'mmdetection/data/tooth_detection/annotations/tooth_only_v1/test.json'
 coco_api = COCO(gt_filename)
 pbar = tqdm(coco_api.imgs.items())
@@ -36,7 +36,7 @@ for (img_id, img) in pbar:
     inferences = list(zip(scores, labels, bboxes))
 
     # remove duplicates → assign to ‘filtered inferences’
-    filtered_inferences = remove_duplicates_and_keep_highest(inferences)
+    filtered_inferences = remove_duplicates_and_keep_highest(inferences, img_id)
     post_processed.extend(filtered_inferences)
 pbar.close()
 

@@ -24,7 +24,8 @@ metainfo = {
 }
 
 gt_filename = 'mmdetection/data/tooth_detection/annotations/tooth_only_v1/test.json'
-pred_filename = 'work_dirs/test_results/first_test.bbox.json'
+#pred_filename = 'work_dirs/test_results/first_test.bbox.json'
+pred_filename = 'post_processed.json'
 coco_api = COCO(gt_filename)
 coco_dt = coco_api.loadRes(pred_filename)
 
