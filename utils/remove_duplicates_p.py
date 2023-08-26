@@ -11,7 +11,7 @@ def remove_duplicates_and_keep_highest(predictions, image_id=None):
     for score, category_id, bbox in predictions:
         if category_id in unique_predictions:
             pos = random.random()
-            if score > unique_predictions[category_id][0] and pos > p_threshold:
+            if pos > p_threshold:
                 unique_predictions[category_id] = (score, bbox)
         else:
             unique_predictions[category_id] = (score, bbox)
