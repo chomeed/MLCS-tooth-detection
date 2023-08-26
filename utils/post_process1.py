@@ -26,7 +26,7 @@ model = init_detector(config_file, checkpoint_file, device='cuda:0')  # or 'cpu'
 # Accumulate all post processed inferences
 post_processed = []
 
-def xyxy2xywh(self, bbox: np.ndarray) -> list:
+def xyxy2xywh(bbox):
         """Convert ``xyxy`` style bounding boxes to ``xywh`` style for COCO
         evaluation.
 
@@ -37,14 +37,9 @@ def xyxy2xywh(self, bbox: np.ndarray) -> list:
         Returns:
             list[float]: The converted bounding boxes, in ``xywh`` order.
         """
-
-        _bbox: List = bbox.tolist()
-        return [
-            _bbox[0],
-            _bbox[1],
-            _bbox[2] - _bbox[0],
-            _bbox[3] - _bbox[1],
-        ]
+        bbox[:, 2] -= bbox[:, 0]
+        bbox[:, 3] -= bbox[:, 1]
+        return bbox.tolist()
 
 def getCatId(idx):
     return coco_api.dataset['categories'][idx]
