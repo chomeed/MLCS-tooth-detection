@@ -7,7 +7,7 @@ config_file = 'configs/test_tooth_only.py'
 checkpoint_file = 'mmdetection/experiments/tooth_only_2/epoch_20.pth'
 model = init_detector(config_file, checkpoint_file, device='cuda:0')  # or 'cpu'
 # Inference on an image
-image = 'mmdetection/data/tooth_detection/test_sample/520928.JPG'
+image = 'mmdetection/data/tooth_detection/sample/526950.JPG'
 result = inference_detector(model, image)
 # Unpack the result
 #num_classes = model.CLASSES  # Total number of classes in the model

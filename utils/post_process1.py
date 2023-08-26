@@ -5,6 +5,7 @@ from remove_duplicates import remove_duplicates_and_keep_highest
 from mmdet.apis import init_detector, inference_detector
 import json 
 from mmdet.apis import init_detector, inference_detector
+import mmcv
 
 
 # Prepare COCO dataset
@@ -30,7 +31,7 @@ def preprocess_image(image_path):
     scale_height = 800
 
     # Resize the image with different scaling factors for width and height
-    image = mmcv.imresize(image, scale_factor=(scale_width, scale_height))
+    image = mmcv.imrescale(image, (scale_width, scale_height))
     # Apply any necessary normalization
     return image
 
@@ -39,9 +40,9 @@ def preprocess_image(image_path):
 for (img_id, img) in pbar: 
     # Inference 
     img_filename = data_root + img['file_name']
-    preprocess_image = preprocess_image(img_filename)
+    preprocessed_image = preprocess_image(img_filename)
 
-    result = inference_detector(model, preprocess_image)
+    result = inference_detector(model, preprocessed_image)
     
     # Tensor to List conversion
     labels = result.pred_instances.labels.tolist()
