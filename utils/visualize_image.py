@@ -15,8 +15,8 @@ def visualize_image(image, inferences):
     bboxes = torch.tensor(bboxes)
 
     # xywh2xyxy
-    bbox[:, 2] += bbox[:, 0]
-    bbox[:, 3] += bbox[:, 1]
+    bboxes[:, 2] += bboxes[:, 0]
+    bboxes[:, 3] += bboxes[:, 1]
 
     det_instances.bboxes = xywh2xyxy(bboxes)
 
