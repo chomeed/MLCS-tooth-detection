@@ -18,7 +18,7 @@ def visualize_image(image, inferences):
     bboxes[:, 2] += bboxes[:, 0]
     bboxes[:, 3] += bboxes[:, 1]
 
-    det_instances.bboxes = xywh2xyxy(bboxes)
+    det_instances.bboxes = bboxes
 
     det_data_sample = DetDataSample()
     det_data_sample.pred_instances = det_instances
