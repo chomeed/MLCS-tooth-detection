@@ -1,6 +1,7 @@
 from mmengine.structures import InstanceData
 from mmdet.structures import DetDataSample
 from mmdet.visualization import DetLocalVisualizer
+import torch
 
 def visualize_image(image, inferences):
     # inferences - list of dicts(image_id, category_id, bbox, score)
@@ -9,9 +10,9 @@ def visualize_image(image, inferences):
     bboxes = [d['bbox'] for d in inferences]
 
     det_instances = InstanceData()
-    det_instances.labels = labels
-    det_instances.scores = scores
-    det_instances.bboxes = bboxes
+    det_instances.labels = torch.tensor(labels)
+    det_instances.scores = torch.tensor(scores)
+    det_instances.bboxes = torch.tensor(bboxes)
 
     det_data_sample = DetDataSample()
     det_data_sample.pred_instances = det_instances
