@@ -4,7 +4,7 @@ def remove_duplicates_and_keep_highest(predictions, image_id=None):
     '''
     predictions = []
     
-    for score, category_id, bbox in predictions:
+    for category_id, score, bbox in predictions:
 
         if len(predictions) == 0: 
             predictions.append((category_id, score, bbox)) 
