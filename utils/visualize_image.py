@@ -12,13 +12,16 @@ def visualize_image(image, inferences):
     det_instances = InstanceData()
     det_instances.labels = torch.tensor(labels)
     det_instances.scores = torch.tensor(scores)
-    det_instances.bboxes = torch.tensor(bboxes)
+    bboxes = torch.tensor(bboxes)
+
+    # xywh2xyxy
+    bbox[:, 2] += bbox[:, 0]
+    bbox[:, 3] += bbox[:, 1]
+
+    det_instances.bboxes = xywh2xyxy(bboxes)
 
     det_data_sample = DetDataSample()
     det_data_sample.pred_instances = det_instances
 
     det_local_visualizer = DetLocalVisualizer()
     det_local_visualizer.add_datasample('image', image, det_data_sample, out_file='test_visualize.jpg')
-
-
-
