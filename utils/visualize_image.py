@@ -38,5 +38,5 @@ if __name__ == '__main__':
     print(len(inferences))
 
     import mmcv 
-    image = mmcv.imread(image)
+    image = mmcv.imread('test.jpg')
     visualize_image(image, inferences)
