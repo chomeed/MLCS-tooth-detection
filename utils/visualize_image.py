@@ -25,3 +25,18 @@ def visualize_image(image, inferences):
 
     det_local_visualizer = DetLocalVisualizer()
     det_local_visualizer.add_datasample('image', image, det_data_sample, out_file='test_visualize.jpg')
+
+
+if __name__ == '__main__': 
+    import json 
+    data = json.load(open('post_processed_p.json'))
+    inferences = []
+    for d in data:
+        if d['image_id'] == 526950:
+            inferences.append(d)
+
+    print(len(inferences))
+
+    import mmcv 
+    image = mmcv.imread(image)
+    visualize_image(image, inferences)
