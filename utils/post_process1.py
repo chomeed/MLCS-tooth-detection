@@ -42,7 +42,7 @@ def xyxy2xywh(bbox):
         return bbox.tolist()
 
 def getCatId(idx):
-    return coco_api.dataset['categories'][idx]
+    return coco_api.dataset['categories'][idx]['id']
 
 # Iterate over COCO dataset
 for (img_id, img) in pbar: 
