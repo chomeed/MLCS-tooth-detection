@@ -57,8 +57,7 @@ for (img_id, img) in pbar:
     bboxes = xyxy2xywh(result.pred_instances.bboxes)
 
     inferences = list(zip(scores, labels, bboxes))
-    print(inferences)
-    break
+
     # remove duplicates → assign to ‘filtered inferences’
     filtered_inferences = remove_duplicates_and_keep_highest(inferences, img_id)
     post_processed.extend(filtered_inferences)
