@@ -2,27 +2,27 @@ def remove_duplicates_and_keep_highest(predictions, image_id=None):
     '''
     return : list of dictionaries (keys - image_id, score, bbox, category_id)
     '''
-    predictions = []
+    new_predictions = []
     
-    for category_id, score, bbox in predictions:
+    for score, category_id, bbox in predictions:
 
         if len(predictions) == 0: 
-            predictions.append((category_id, score, bbox)) 
+            new_predictions.append((category_id, score, bbox)) 
             continue 
         
         overlapped = False
-        for idx, (category_id2, score2, bbox2) in enumerate(predictions): 
+        for idx, (category_id2, score2, bbox2) in enumerate(new_predictions): 
             iou = compute(bbox, bbox2) 
             if iou > 0.6: 
                 overlapped = True
                 # compare score 
                 if score > score2: # 현재 인스턴스가 더 높은 점수를 가지고 있다면, 바꾸기 
-                    predictions[idx] = (category_id, score, bbox)
+                    new_predictions[idx] = (category_id, score, bbox)
         
         if overlapped == False:
-            predictions.append((category_id, score, bbox)) 
+            new_predictions.append((category_id, score, bbox)) 
     
-    filtered_predictions = [{"image_id": image_id, "score": score, "category_id": category_id, "bbox": bbox} for (category_id, score, bbox) in predictions]
+    filtered_predictions = [{"image_id": image_id, "score": score, "category_id": category_id, "bbox": bbox} for (category_id, score, bbox) in new_predictions]
     
     return filtered_predictions
 
