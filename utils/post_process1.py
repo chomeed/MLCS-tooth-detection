@@ -56,6 +56,7 @@ for (img_id, img) in pbar:
     scores = result.pred_instances.scores.tolist()
     bboxes = xyxy2xywh(result.pred_instances.bboxes)
     print(bboxes)
+    print(result.pred_instances.bboxes)
     break
     inferences = list(zip(scores, labels, bboxes))
 
