@@ -13,7 +13,7 @@ def remove_duplicates_and_keep_highest(predictions, image_id=None):
         overlapped = False
         for idx, (category_id2, score2, bbox2) in enumerate(new_predictions): 
             iou = calculate_iou(bbox, bbox2) 
-            if iou > 0.6: 
+            if iou > 0.8: 
                 overlapped = True
                 # compare score 
                 if score > score2: # 현재 인스턴스가 더 높은 점수를 가지고 있다면, 바꾸기 
