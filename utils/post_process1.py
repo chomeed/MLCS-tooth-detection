@@ -55,7 +55,8 @@ for (img_id, img) in pbar:
     labels = map(getCatId, result.pred_instances.labels.tolist())
     scores = result.pred_instances.scores.tolist()
     bboxes = xyxy2xywh(result.pred_instances.bboxes)
-    
+    print(bboxes)
+    break
     inferences = list(zip(scores, labels, bboxes))
 
     # remove duplicates → assign to ‘filtered inferences’
