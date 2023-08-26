@@ -1,7 +1,7 @@
 # post_process1.p y 
 from mmdet.datasets.api_wrappers import COCO
 from tqdm import tqdm 
-from remove_duplicates_p import remove_duplicates_and_keep_highest 
+from remove_duplicates import remove_duplicates_and_keep_highest 
 from mmdet.apis import init_detector, inference_detector
 import json 
 from mmdet.apis import init_detector, inference_detector
@@ -65,5 +65,5 @@ pbar.close()
 
 
 # save to new json file 
-with open('post_processed.json', 'w') as newfile:
+with open('post_processed_p.json', 'w') as newfile:
     json.dump(post_processed, newfile)
