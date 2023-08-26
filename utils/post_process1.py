@@ -37,8 +37,8 @@ def xyxy2xywh(bbox):
         Returns:
             list[float]: The converted bounding boxes, in ``xywh`` order.
         """
-        bbox[:, 2] -= bbox[:, 0]
-        bbox[:, 3] -= bbox[:, 1]
+        # bbox[:, 2] -= bbox[:, 0]
+        # bbox[:, 3] -= bbox[:, 1]
         return bbox.tolist()
 
 def getCatId(idx):
