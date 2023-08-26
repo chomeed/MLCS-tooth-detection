@@ -21,33 +21,46 @@ config_file = 'configs/test_tooth_only.py'
 checkpoint_file = 'mmdetection/experiments/tooth_only_2/epoch_20.pth'
 model = init_detector(config_file, checkpoint_file, device='cuda:0')  # or 'cpu'
 
+
+
 # Accumulate all post processed inferences
 post_processed = []
 
-def preprocess_image(image_path):
-    # Load and preprocess the image
-    image = mmcv.imread(image_path)
-    scale_width = 1333
-    scale_height = 800
+def xyxy2xywh(self, bbox: np.ndarray) -> list:
+        """Convert ``xyxy`` style bounding boxes to ``xywh`` style for COCO
+        evaluation.
 
-    # Resize the image with different scaling factors for width and height
-    image = mmcv.imrescale(image, (scale_width, scale_height))
-    # Apply any necessary normalization
-    return image
+        Args:
+            bbox (numpy.ndarray): The bounding boxes, shape (4, ), in
+                ``xyxy`` order.
 
+        Returns:
+            list[float]: The converted bounding boxes, in ``xywh`` order.
+        """
+
+        _bbox: List = bbox.tolist()
+        return [
+            _bbox[0],
+            _bbox[1],
+            _bbox[2] - _bbox[0],
+            _bbox[3] - _bbox[1],
+        ]
+
+def getCatId(idx):
+    return coco_api.dataset['categories'][idx]
 
 # Iterate over COCO dataset
 for (img_id, img) in pbar: 
     # Inference 
     img_filename = data_root + img['file_name']
-    preprocessed_image = preprocess_image(img_filename)
 
-    result = inference_detector(model, preprocessed_image)
-    
+    result = inference_detector(model, img_filename)
+
     # Tensor to List conversion
-    labels = result.pred_instances.labels.tolist()
+    labels = map(getCatId, result.pred_instances.labels.tolist())
     scores = result.pred_instances.scores.tolist()
-    bboxes = result.pred_instances.bboxes.tolist()
+    bboxes = xyxy2xywh(result.pred_instances.bboxes)
+    
     inferences = list(zip(scores, labels, bboxes))
 
     # remove duplicates → assign to ‘filtered inferences’
