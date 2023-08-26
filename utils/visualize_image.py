@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
     file_path = 'mmdetection/data/tooth_detection/sample/520051.JPG'
 
-    data = json.load(open('post_processed_p.json'))
+    data = json.load(open('post_processed_iou.json'))
     inferences = []
     for d in data:
         if d['image_id'] == image_id:
