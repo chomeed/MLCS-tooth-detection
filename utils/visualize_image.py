@@ -39,4 +39,5 @@ if __name__ == '__main__':
 
     import mmcv 
     image = mmcv.imread('test.jpg')
+    image = mmcv.bgr2rgb(image)
     visualize_image(image, inferences)
