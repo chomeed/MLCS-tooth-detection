@@ -37,8 +37,8 @@ def xyxy2xywh(bbox):
         Returns:
             list[float]: The converted bounding boxes, in ``xywh`` order.
         """
-        # bbox[:, 2] -= bbox[:, 0]
-        # bbox[:, 3] -= bbox[:, 1]
+        bbox[:, 2] -= bbox[:, 0]
+        bbox[:, 3] -= bbox[:, 1]
         return bbox.tolist()
 
 def getCatId(idx):
@@ -55,11 +55,10 @@ for (img_id, img) in pbar:
     labels = map(getCatId, result.pred_instances.labels.tolist())
     scores = result.pred_instances.scores.tolist()
     bboxes = xyxy2xywh(result.pred_instances.bboxes)
-    print(bboxes)
-    print(result.pred_instances.bboxes)
-    break
-    inferences = list(zip(scores, labels, bboxes))
 
+    inferences = list(zip(scores, labels, bboxes))
+    print(inferences)
+    break
     # remove duplicates → assign to ‘filtered inferences’
     filtered_inferences = remove_duplicates_and_keep_highest(inferences, img_id)
     post_processed.extend(filtered_inferences)
