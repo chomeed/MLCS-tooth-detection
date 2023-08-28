@@ -105,4 +105,5 @@ table = AsciiTable(table_data)
 print('\n' + table.table)
 print(table)
 print(table_data)
+print(precisions)
 
