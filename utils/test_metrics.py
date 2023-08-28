@@ -25,7 +25,7 @@ metainfo = {
 
 gt_filename = 'mmdetection/data/tooth_detection/annotations/tooth_only_v1/test.json'
 #pred_filename = 'work_dirs/test_results/first_test.bbox.json'
-pred_filename = 'post_processed_iou.json'
+pred_filename = 'post_processed.json'
 coco_api = COCO(gt_filename)
 coco_dt = coco_api.loadRes(pred_filename)
 
@@ -126,6 +126,6 @@ def list_to_json(input_list):
     return json_data
 
 
-with open('test_json.json', 'w') as wf:
+with open('post_processed_mAP.json', 'w') as wf:
     json_data = list_to_json(table_data)
     json.dump(list_to_json(table_data), wf)
