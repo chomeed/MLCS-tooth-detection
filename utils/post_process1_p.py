@@ -4,7 +4,6 @@ from tqdm import tqdm
 from remove_duplicates_p import remove_duplicates_and_keep_highest 
 from mmdet.apis import init_detector, inference_detector
 import json 
-from mmdet.apis import init_detector, inference_detector
 import mmcv
 
 

@@ -28,7 +28,7 @@ headers = ['category', 'mAP', 'mAP_50', 'mAP_75', 'mAP_s', 'mAP_m', 'mAP_l']
 sheet.append(headers) 
 
 # Baseline 불러오기 
-with open('baseline.json', 'r') as rf: 
+with open('baseline_mAP.json', 'r') as rf: 
     baseline_data = json.load(rf)
 
 with open('post_processed_iou80_mAP.json', 'r') as rf:

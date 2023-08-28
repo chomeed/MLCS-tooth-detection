@@ -107,7 +107,7 @@ test_evaluator = dict(
     # format_only=True,
     format_only=False,
     ann_file=data_root + 'annotations/tooth_only_v1/test.json',
-    outfile_prefix='work_dirs/test_results/first_test',
+    outfile_prefix='work_dirs/test_results/baseline',
     backend_args=backend_args,
     classwise=True,
     )
