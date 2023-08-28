@@ -105,5 +105,19 @@ table = AsciiTable(table_data)
 print('\n' + table.table)
 print(table)
 print(table_data)
-print(precisions)
 
+import json
+
+def list_to_json(input_list):
+    headers = input_list[0]
+    json_data = []
+
+    for values in input_list[1:]:
+        category_data = {}
+        for i, header in enumerate(headers):
+            category_data[header] = values[i]
+        json_data.append(category_data)
+
+    return json_data
+
+json.dump(json_data, 'test_json.json')
