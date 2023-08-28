@@ -17,12 +17,13 @@ sheet.append(headers)
 
 with open('test_json.json', 'r') as rf:
     data = json.load(rf) 
+    sorted_data = sorted(data, key=lambda x: x['category'][-2:])
 
-for d in data:
+for d in sorted_data:
     new_data = list(d.values())
     sheet.append(new_data) 
 
 # #셀 단위로 추가
 # sheet.cell(5, 5, '5행5열')
 
-write_wb.save("test.xlsx")
+write_wb.save("test2.xlsx")
