@@ -3,3 +3,4 @@ work_dirs/
 slurm*
 *.json
 utils/__pycache__/*.pyc 
+*.xlsx
