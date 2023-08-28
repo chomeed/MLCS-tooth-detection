@@ -20,9 +20,6 @@ def compare_values_and_get_pattern_fill(value1, value2):
 # 엑셀파일 쓰기
 write_wb = Workbook()
 
-# 이름이 있는 시트를 생성
-# sheet = write_wb.create_sheet('no name')
-
 # Sheet1에다 입력
 sheet = write_wb.active
 
@@ -33,9 +30,8 @@ sheet.append(headers)
 # Baseline 불러오기 
 with open('baseline.json', 'r') as rf: 
     baseline_data = json.load(rf)
-    # data = list(data.items())
 
-with open('test_json.json', 'r') as rf:
+with open('post_processed_mAP.json', 'r') as rf:
     data = json.load(rf)
     data = list(data.items())
     sorted_data = sorted(data, key=lambda x: x[0][-2:])
@@ -52,17 +48,11 @@ for row_idx, d in enumerate(sorted_data, start=2):
         patterns.append(pattern_fill)
     
     new_data = mAP_data
-    new_data.insert(0, cat)
-    # new data is a list 
+    new_data.insert(0, cat) # list
 
     alphabet = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
     for col_idx, elem, pat in zip(alphabet, new_data, patterns):
         sheet[f"{col_idx}{row_idx}"] = elem
         sheet[f"{col_idx}{row_idx}"].fill = pat
 
-    # sheet.append(new_data) 
-
-# # #셀 단위로 추가
-# # sheet.cell(5, 5, '5행5열')
-
-write_wb.save("test3.xlsx")
+write_wb.save("post_processed_mAP.xlsx")

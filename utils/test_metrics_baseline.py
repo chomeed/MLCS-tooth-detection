@@ -126,6 +126,6 @@ def list_to_json(input_list):
     return json_data
 
 
-with open('baseline.json', 'w') as wf:
+with open('baseline_mAP.json', 'w') as wf:
     json_data = list_to_json(table_data)
     json.dump(list_to_json(table_data), wf)
