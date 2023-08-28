@@ -1,19 +1,28 @@
 from openpyxl import Workbook
-
+import json
 
 # 엑셀파일 쓰기
 write_wb = Workbook()
 
 # 이름이 있는 시트를 생성
-write_ws = write_wb.create_sheet('생성시트')
+# sheet = write_wb.create_sheet('no name')
 
 # Sheet1에다 입력
-write_ws = write_wb.active
-write_ws['A1'] = '숫자'
+sheet = write_wb.active
 
-#행 단위로 추가
-write_ws.append([1,2,3])
+# 데이터 불러오기
+headers = ['category', 'mAP', 'mAP_50', 'mAP_75', 'mAP_s', 'mAP_m', 'mAP_l']
+sheet.append(headers) 
 
-#셀 단위로 추가
-write_ws.cell(5, 5, '5행5열')
-write_wb.save("123.xlsx")
+
+with open('test_json.json', 'r') as rf:
+    data = json.load(rf) 
+
+for d in data:
+    new_data = list(d.values())
+    sheet.append(new_data) 
+
+# #셀 단위로 추가
+# sheet.cell(5, 5, '5행5열')
+
+write_wb.save("test.xlsx")
