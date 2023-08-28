@@ -103,4 +103,6 @@ table_data = [headers]
 table_data += [result for result in results_2d]
 table = AsciiTable(table_data)
 print('\n' + table.table)
+print(table)
+print(table_data)
 
