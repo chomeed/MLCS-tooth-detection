@@ -120,4 +120,5 @@ def list_to_json(input_list):
 
     return json_data
 
-json.dump(list_to_json(table_data), 'test_json.json')
+with open('test_json.json', 'w') as wf:
+    json.dump(list_to_json(table_data), wf)
