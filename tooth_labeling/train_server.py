@@ -54,7 +54,7 @@ for e in range(1, num_epochs+1):
         if (i+1) % 20 == 0:
             print(f'Epoch [{e+1}/{num_epochs}], Step [{i+1}/{len(train_dataloader)}], Loss: {loss.item():.6f}')
     
-    acc = test(model, test_dataloader)
+    acc = test(model, test_dataloader, device)
     # Save the trained model
     torch.save(model.state_dict(), f'epoch_{e}.pth')
 

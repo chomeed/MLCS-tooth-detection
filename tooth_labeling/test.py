@@ -1,9 +1,9 @@
 import torch 
 
-def test(model, test_dataloader): 
+def test(model, test_dataloader, device): 
     correct = 0
     total = 0
-
+    
     with torch.no_grad():
         for i, (images, labels) in enumerate(test_dataloader): 
             images, labels = images.to(device), labels.to(device)
