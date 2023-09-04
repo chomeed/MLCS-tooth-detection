@@ -38,7 +38,7 @@ class ToothImageDataset(Dataset):
         filepath, label = self.img_labels[idx]
         full_filepath = os.path.join(self.img_dir, filepath) 
         #image = read_image(full_filepath) 
-        image = Image.open(full)
+        image = Image.open(full_filepath)
 
         if self.transform: 
             image = self.transform(image) 
