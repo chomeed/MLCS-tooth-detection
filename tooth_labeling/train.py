@@ -38,7 +38,7 @@ for e in range(num_epochs):
         optimizer.step()
         print(loss.item())
         if (i+1) % 10 == 0:
-            print(f'Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{len(train_loader)}], Loss: {loss.item():.4f}')
+            print(f'Epoch [{e+1}/{num_epochs}], Step [{i+1}/{len(dataloader)}], Loss: {loss.item():.4f}')
 
 # Save the trained model
 torch.save(model.state_dict(), 'resnet34.pth')
