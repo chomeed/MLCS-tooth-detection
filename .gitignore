@@ -5,5 +5,3 @@ slurm*
 utils/__pycache__/*.pyc 
 *.xlsx
 .DS_Store
-tooth_labeling/sample.json
-tooth_labeling/sample/
