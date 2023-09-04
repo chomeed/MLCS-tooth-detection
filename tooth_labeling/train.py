@@ -14,7 +14,7 @@ dataset = ToothImageDataset(img_label_file='sample_cleansed.json', img_dir='samp
 dataloader = DataLoader(dataset=dataset, batch_size=2, shuffle=True)
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-model = resnet34
+model = resnet34.to(device)
 
 optimizer = torch.optim.SGD(params=model.parameters(), lr=0.005, momentum=0.9)
 criterion = torch.nn.CrossEntropyLoss()
