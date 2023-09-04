@@ -33,7 +33,7 @@ optimizer = torch.optim.Adam(params=model.parameters(), lr=0.001, betas=[0.9, 0.
 criterion = torch.nn.CrossEntropyLoss()
 num_epochs = 10 
 
-test(model, test_dataloader)
+test(model, test_dataloader, device)
 for e in range(1, num_epochs+1): 
     for i, (images, labels) in enumerate(train_dataloader):
         images, labels = images.to(device), labels.to(device)
