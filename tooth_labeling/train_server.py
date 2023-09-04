@@ -19,7 +19,7 @@ dataloader = DataLoader(dataset=dataset, batch_size=10, shuffle=True)
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 model = resnet34.to(device)
 
-optimizer = torch.optim.Adam(params=model.parameters(), lr=0.001, momentum=0.9, betas=[0.9, 0.999], eps=1e-8, weight_decay=0)
+optimizer = torch.optim.Adam(params=model.parameters(), lr=0.001, betas=[0.9, 0.999], eps=1e-8, weight_decay=0)
 criterion = torch.nn.CrossEntropyLoss()
 num_epochs = 10 
 
