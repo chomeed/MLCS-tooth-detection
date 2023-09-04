@@ -14,12 +14,12 @@ img_label_file = '/home/summer23_intern1/workspace/MLCS-tooth-detection/mmdetect
 img_dir = '/home/summer23_intern1/workspace/MLCS-tooth-detection/mmdetection/data/tooth_detection/sample'
 
 dataset = ToothImageDataset(img_label_file=img_label_file, img_dir=img_dir, transform=transform)
-dataloader = DataLoader(dataset=dataset, batch_size=2, shuffle=True)
+dataloader = DataLoader(dataset=dataset, batch_size=10, shuffle=True)
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 model = resnet34.to(device)
 
-optimizer = torch.optim.SGD(params=model.parameters(), lr=0.005, momentum=0.9)
+optimizer = torch.optim.Adam(params=model.parameters(), lr=0.001, momentum=0.9, betas=[0.9, 0.999], eps=1e-8, weight_decay=0)
 criterion = torch.nn.CrossEntropyLoss()
 num_epochs = 10 
 
@@ -40,7 +40,7 @@ for e in range(num_epochs):
         loss.backward()
         optimizer.step()
 
-        if (i+1) % 10 == 0:
+        if (i+1) % 200 == 0:
             print(f'Epoch [{e+1}/{num_epochs}], Step [{i+1}/{len(dataloader)}], Loss: {loss.item():.4f}')
 
 # Save the trained model
