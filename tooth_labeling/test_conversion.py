@@ -3,6 +3,12 @@ import json
 from bbox2list import bbox2list
 from category_id_conversion import match_template, id2tooth
 
+'''
+correct: 5030
+total: 6985
+accuracy: 0.7201145311381532
+'''
+
 # 데이터 불러오기
 filepath = '/home/summer23_intern1/workspace/MLCS-tooth-detection/mmdetection/data/tooth_detection/annotations/tooth_only_clean.json' 
 teeth_coco = COCO(annotation_file=filepath)
@@ -23,6 +29,8 @@ for img in images_list:
 correct = 0 
 total = len(new_images_id_list)
 
+incorrect = []
+
 for img_id in new_images_id_list: 
     anns_id = teeth_coco.getAnnIds(img_id)
     anns = teeth_coco.loadAnns(anns_id) 
@@ -34,6 +42,15 @@ for img_id in new_images_id_list:
 
     correct += match_template(sorted_teeth)
 
+    if match_template(sorted_teeth) == False: 
+        incorrect.append(img_id)
+    if len(incorrect) == 3: break
+
+
 print("correct:", correct)
 print("total:", total)
 print(f"accuracy: {correct/total}")
+print("incorrect dets:")
+for img in teeth_coco.loadImgs(incorrect):
+    print(img["file_name"])
+    
