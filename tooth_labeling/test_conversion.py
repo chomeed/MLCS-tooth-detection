@@ -4,7 +4,7 @@ from bbox2list import bbox2list
 from category_id_conversion import match_template, id2tooth
 
 # 데이터 불러오기
-filepath = '/home/summer23_intern1/workspace/MLCS-tooth-detection/mmdetection/data/tooth_detection/annotations/tooth_only.json' 
+filepath = '/home/summer23_intern1/workspace/MLCS-tooth-detection/mmdetection/data/tooth_detection/annotations/tooth_only_clean.json' 
 teeth_coco = COCO(annotation_file=filepath)
 
 labels = ('upper', 'lower')
