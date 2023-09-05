@@ -52,7 +52,7 @@ for e in range(1, num_epochs+1):
         optimizer.step()
 
         if (i+1) % 20 == 0:
-            print(f'Epoch [{e+1}/{num_epochs}], Step [{i+1}/{len(train_dataloader)}], Loss: {loss.item():.6f}')
+            print(f'Epoch [{e}/{num_epochs}], Step [{i+1}/{len(train_dataloader)}], Loss: {loss.item():.6f}')
     
     acc = test(model, test_dataloader, device)
     # Save the trained model
