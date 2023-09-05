@@ -9,7 +9,7 @@ teeth_coco = COCO(annotation_file=filepath)
 
 labels = ('upper', 'lower')
 
-images_list = json.load(open('filepath'))['images']
+images_list = json.load(open(filepath))['images']
 
 # upper나 lower인 이미지 ids 추출해서 리스트로 만들기 
 new_images_id_list = []
