@@ -2,7 +2,7 @@ from pycocotools.coco import COCO
 import numpy as np
 from scipy.spatial import distance
 from scipy.sparse.csgraph import minimum_spanning_tree
-import matplotlib.pyplot as plt
+from category_id_conversion import id2tooth, match_template
 
 # Specify the path to the COCO dataset annotations file and the category name
 dataDir = '/home/summer23_intern1/workspace/MLCS-tooth-detection/mmdetection/data/tooth_detection/sample'
@@ -25,6 +25,7 @@ img_id = 498616
 
 # Extract center coordinates
 center_coords = []
+tooth_nums = []
 
 # Get all the annotations for the specified category
 ann_ids = coco.getAnnIds(img_id)
@@ -35,6 +36,7 @@ for ann in anns:
     center_x = x + (w / 2)
     center_y = y + (h / 2)
     center_coords.append([center_x, center_y])
+    tooth_nums.append(id2tooth[ann['category_id']])
 
 center_coords = np.array(center_coords)
 
@@ -67,22 +69,14 @@ for edge in edges:
 
 # Initialize the result list
 ordered_points = []
+ordered_tooth_list = []
 
 # Start the depth-first traversal from the root node
 depth_first_traversal(root, None, adjacency_list, ordered_points)
 
-# Extract the center coordinates of the nodes in the order they were visited
-ordered_center_coords = [center_coords[node] for node in ordered_points]
+# Extract the center coordinates and category IDs of the nodes in the order they were visited
+for node in ordered_points:
+    ordered_tooth_list.append(tooth_nums[node])
 
-# Plot the center coordinates
-plt.scatter(center_coords[:, 0], center_coords[:, 1], c='blue', marker='o', label='Center Coords')
-
-# Plot the MST edges
-for edge in edges:
-    plt.plot(center_coords[edge, 0], center_coords[edge, 1], c='red', linewidth=0.5)
-
-plt.xlabel('X-coordinate')
-plt.ylabel('Y-coordinate')
-plt.title('Minimum Spanning Tree')
-plt.legend(loc='upper right')
-plt.show()
+print(ordered_tooth_list)
+print(match_template)
