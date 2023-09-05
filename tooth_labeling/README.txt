@@ -36,3 +36,5 @@ left <- smallest ... largest --> right
 - unit test 
 given two teeth, assert that they are in the correct order 
 -> just for testing on ground truth 
+
+MST ->

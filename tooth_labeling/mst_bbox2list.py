@@ -47,7 +47,17 @@ pairwise_distances = distance.pdist(center_coords)
 mst = minimum_spanning_tree(distance.squareform(pairwise_distances))
 
 # Find the root node (you can choose any node as the root)
-root = 0  # Change this if needed
+root = None
+min_x = float('inf')
+
+for i in range(len(center_coords)):
+    if np.sum(mst[i, :] != 0) == 1:
+        if center_coords[i, 0] < min_x:
+            min_x = center_coords[i, 0]
+            root = i
+
+if root is None:
+    raise ValueError("No root node with only one edge found.")
 
 def depth_first_traversal(node, parent, adjacency_list, result):
     result.append(node)
@@ -79,4 +89,4 @@ for node in ordered_points:
     ordered_tooth_list.append(tooth_nums[node])
 
 print(ordered_tooth_list)
-print(match_template)
+print(match_template(ordered_tooth_list))
